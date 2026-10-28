@@ -399,7 +399,7 @@ export default function App() {
 
               <div className="lvc-real-software-frame">
                 <img
-                  src={CONTACT_INFO.appScreenshot}
+                  src={CONTACT_INFO.appScreenshot || CONTACT_INFO.realAppScreenshot || '/images/lvcstudio-app-real.png'}
                   alt="Ảnh chụp thực tế phần mềm LVCStudio — Review & Auto Dub Pro với Kho mẫu Kịch bản 1-Click"
                   className="lvc-real-software-img"
                   loading="eager"

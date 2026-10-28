@@ -104,7 +104,7 @@ export default function LvcStudioHeroPreview({
       {showRealAppScreenshot ? (
         <div className="lvc-hero-real-shot-wrap">
           <img
-            src={CONTACT_INFO.appScreenshot}
+            src={CONTACT_INFO.appScreenshot || CONTACT_INFO.realAppScreenshot || '/images/lvcstudio-app-real.png'}
             alt="Giao diện phần mềm LVCStudio — Review & Auto Dub Pro với Kho mẫu Kịch bản 1-Click"
             className="lvc-hero-real-shot-img"
             loading="eager"
