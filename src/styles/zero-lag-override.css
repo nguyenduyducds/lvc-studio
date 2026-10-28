@@ -1,0 +1,555 @@
+/* ==========================================================================
+   LVC STUDIO — ZERO-LAG 60FPS SURGICAL OVERRIDE FOR AUTHENTIC GENSTUDIO CSS
+   Preserves 100% of genstudio.vn's authentic gradients, borders, shadows,
+   3D Hero Stage, and typography while neutralizing GPU framebuffer bottlenecks.
+   ========================================================================== */
+
+/* 1. Keep Aurora background colors 100% intact, remove 140px Gaussian blur & SVG noise */
+.aurora-layer--back::before,
+.aurora-layer--middle::before,
+.aurora-layer--front::before {
+  filter: none !important;
+  -webkit-filter: none !important;
+  animation: none !important;
+  will-change: auto !important;
+}
+
+.aurora-noise-overlay {
+  display: none !important;
+}
+
+/* 2. Remove expensive per-frame backdrop-filter readbacks on scrolling cards */
+.ecosystem-home *,
+.ecosystem-home *::before,
+.ecosystem-home *::after,
+.site-footer *,
+.site-footer *::before,
+.site-footer *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* 3. Keep radial-gradient glow on 3D Hero Stage without redundant Gaussian filter blur */
+.hero-portal-halo,
+.hero-stage-reflection,
+.hero-aurora-sweep,
+.product-card::before {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* 4. Telegram button in Floating Social Dock */
+.floating-dock__btn--social.telegram {
+  background: linear-gradient(135deg, #2aabee 0%, #229ed9 100%) !important;
+  border: 1px solid rgba(42, 171, 238, 0.45) !important;
+}
+
+/* ==========================================================================
+   5. INTERACTIVE LVC STUDIO HERO WORKSPACE (REAL /video/ INTEGRATION)
+   ========================================================================== */
+.lvc-hero-studio-shell {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #080f1e 0%, #050a14 100%);
+  color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Inter, system-ui, sans-serif;
+  user-select: none;
+}
+
+.lvc-hero-titlebar {
+  height: 40px;
+  padding: 0 14px;
+  background: #0d1729;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.lvc-hero-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lvc-hero-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.lvc-hero-dots .dot-r { background: #ef4444; }
+.lvc-hero-dots .dot-y { background: #f59e0b; }
+.lvc-hero-dots .dot-g { background: #10b981; }
+
+.lvc-hero-appname {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.lvc-hero-logo-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(34, 211, 238, 0.15);
+  border: 1px solid var(--studio-accent, #22d3ee);
+  color: var(--studio-accent, #22d3ee);
+  font-size: 12px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.lvc-hero-appname strong {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #f8fafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lvc-hero-hw-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #6ee7b7;
+  font-family: monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  margin-right: 32px; /* Leave room for pause button */
+  flex-shrink: 0;
+}
+
+.hw-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.lvc-hero-workspace {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 205px minmax(0, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.lvc-hero-queue {
+  background: #0b1424;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 11px;
+  padding: 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-height: 0;
+}
+
+.lvc-hero-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+.lvc-hero-panel-head b {
+  color: #38bdf8;
+  font-family: monospace;
+}
+
+.lvc-hero-queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.lvc-hero-queue-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.18s, background 0.18s;
+}
+
+.lvc-hero-queue-item:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.lvc-hero-queue-item.is-active {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.22) 0%, rgba(37, 99, 235, 0.18) 100%);
+  border-color: var(--studio-accent, #22d3ee);
+}
+
+.lvc-hero-queue-thumb {
+  width: 44px;
+  height: 30px;
+  border-radius: 5px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.lvc-hero-queue-meta {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lvc-hero-queue-meta strong {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #f8fafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lvc-hero-queue-meta small {
+  font-family: monospace;
+  font-size: 9px;
+  color: #67e8f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lvc-hero-gpu-box {
+  margin-top: auto;
+  padding: 8px;
+  border-radius: 8px;
+  background: #070e1b;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gpu-box-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #67e8f9;
+}
+
+.gpu-box-row b {
+  color: #34d399;
+}
+
+.gpu-box-bar {
+  height: 5px;
+  border-radius: 999px;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.gpu-box-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #22d3ee, #6366f1);
+}
+
+.lvc-hero-gpu-box small {
+  font-family: monospace;
+  font-size: 8.5px;
+  color: #64748b;
+}
+
+/* Right Main Monitor + Timeline */
+.lvc-hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.lvc-hero-monitor {
+  flex: 1;
+  min-height: 0;
+  border-radius: 11px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: #03070e;
+  position: relative;
+  overflow: hidden;
+}
+
+.lvc-hero-video-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #000;
+}
+
+.lvc-hero-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  display: block;
+}
+
+.lvc-hero-video-close {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(248, 113, 113, 0.65);
+  color: #fecaca;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.18s;
+}
+
+.lvc-hero-video-close:hover {
+  background: #dc2626;
+  color: #fff;
+  transform: scale(1.04);
+}
+
+.lvc-hero-poster-btn {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 12px;
+  background: #040912;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  isolation: isolate;
+}
+
+.lvc-hero-poster-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transition: transform 0.25s ease;
+}
+
+.lvc-hero-poster-btn:hover .lvc-hero-poster-img {
+  transform: scale(1.03);
+}
+
+.lvc-hero-poster-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 10, 20, 0.72) 0%,
+    rgba(4, 10, 20, 0.18) 45%,
+    rgba(4, 10, 20, 0.92) 100%
+  );
+}
+
+.lvc-hero-monitor-hud-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.lvc-hud-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(6, 14, 26, 0.9);
+  border: 1px solid var(--studio-accent, #22d3ee);
+  color: #67e8f9;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.lvc-hud-res {
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(6, 14, 26, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.lvc-hero-play-trigger {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.lvc-hero-play-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #67e8f9 0%, #06b6d4 55%, #2563eb 100%);
+  color: #031520;
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 7px rgba(34, 211, 238, 0.24), 0 12px 28px rgba(6, 182, 212, 0.6);
+  transition: transform 0.2s ease;
+}
+
+.lvc-hero-poster-btn:hover .lvc-hero-play-circle {
+  transform: scale(1.09);
+}
+
+.lvc-hero-play-label {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(6, 14, 26, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.38);
+  color: #e0f2fe;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.lvc-hero-sub-box {
+  background: rgba(5, 11, 22, 0.92);
+  border: 1px solid rgba(34, 211, 238, 0.55);
+  border-radius: 9px;
+  padding: 7px 12px;
+  text-align: center;
+}
+
+.lvc-hero-sub-box strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  color: #f8fafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lvc-hero-sub-box span {
+  display: block;
+  margin-top: 2px;
+  font-family: monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #67e8f9;
+}
+
+/* Bottom Timeline inside Hero */
+.lvc-hero-timeline {
+  background: #0b1424;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 10px;
+  padding: 7px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.lvc-timeline-playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 48%;
+  width: 2px;
+  background: #22d3ee;
+  pointer-events: none;
+}
+
+.lvc-timeline-row {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+}
+
+.tl-tag {
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 800;
+  color: #64748b;
+}
+
+.tl-track {
+  height: 18px;
+  border-radius: 4px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  font-size: 9.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tl-track--video {
+  background: rgba(14, 116, 144, 0.35);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  color: #e0f2fe;
+}
+
+.tl-track--sub {
+  background: rgba(126, 34, 206, 0.32);
+  border: 1px solid rgba(168, 85, 247, 0.48);
+  color: #f3e8ff;
+}
+
+.tl-track--audio {
+  background: rgba(4, 120, 87, 0.32);
+  border: 1px solid rgba(16, 185, 129, 0.48);
+  color: #a7f3d0;
+}
+
+@media (max-width: 720px) {
+  .lvc-hero-workspace {
+    grid-template-columns: 1fr;
+  }
+  .lvc-hero-queue {
+    display: none;
+  }
+}

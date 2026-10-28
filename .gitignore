@@ -1,0 +1,6 @@
+node_modules
+dist
+.vercel
+/video
+.DS_Store
+*.log
