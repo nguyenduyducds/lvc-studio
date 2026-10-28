@@ -1,11 +1,40 @@
 import React, { useState } from 'react';
 
+export function LvcClapperboardLogo({ size = 34 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 64 64"
+      fill="none"
+      aria-hidden="true"
+      className="lvc-official-logo-svg"
+    >
+      <defs>
+        <linearGradient id="lvcGoldSquare" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#fde047" />
+          <stop offset="50%" stopColor="#fbbf24" />
+          <stop offset="100%" stopColor="#d97706" />
+        </linearGradient>
+      </defs>
+      <rect width="64" height="64" rx="15" fill="url(#lvcGoldSquare)" />
+      {/* Tilted Movie Clapperboard with Golden Play Icon inside */}
+      <rect x="13" y="23" width="38" height="27" rx="5" fill="#18181b" />
+      <path d="M13 18.5C13 16 15 14 17.5 14H46.5C49 14 51 16 51 18.5V23H13V18.5Z" fill="#27272a" />
+      <line x1="19" y1="14.5" x2="23" y2="22.5" stroke="#fbbf24" strokeWidth="3" strokeLinecap="round" />
+      <line x1="29" y1="14.5" x2="33" y2="22.5" stroke="#fbbf24" strokeWidth="3" strokeLinecap="round" />
+      <line x1="39" y1="14.5" x2="43" y2="22.5" stroke="#fbbf24" strokeWidth="3" strokeLinecap="round" />
+      <polygon points="27,29.5 27,43.5 39.5,36.5" fill="#fbbf24" />
+      <circle cx="48" cy="18" r="2.2" fill="#fef08a" />
+    </svg>
+  );
+}
+
 export default function Header({
   theme,
   onToggleTheme,
   locale,
   onToggleLocale,
-  onOpenYoutubeModal,
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langMorphing, setLangMorphing] = useState(false);
@@ -22,30 +51,17 @@ export default function Header({
   return (
     <header className="public-product-header">
       <div className="public-product-header__inner">
-        {/* Brand Logo: LVC · STUDIO */}
-        <a className="public-product-header__brand" href="#top" aria-label="LVC STUDIO">
-          <span className="public-product-header__mark" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <defs>
-                <linearGradient id="lvcMarkGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#30d5ff" />
-                  <stop offset="55%" stopColor="#3b82f6" />
-                  <stop offset="100%" stopColor="#a970ff" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 3.2l6 3.3v7l-6 3.3-6-3.3v-7l6-3.3z"
-                fill="url(#lvcMarkGrad)"
-              />
-              <circle cx="12" cy="12" r="2.6" fill="#30d5ff" />
-            </svg>
+        {/* Official Brand Logo: LVCStudio — REVIEW & AUTO DUB PRO */}
+        <a className="public-product-header__brand lvc-brand-identity" href="#top" aria-label="LVCStudio Review & Auto Dub Pro">
+          <span className="lvc-brand-icon-wrap" aria-hidden="true">
+            <LvcClapperboardLogo size={36} />
           </span>
           <span className="public-product-header__brand-text">
-            <span className="public-product-header__brand-row">
-              <strong className="header-brand-gen">LVC</strong>
-              <span className="header-brand-sep" aria-hidden="true">·</span>
-              <span className="header-brand-studio">STUDIO</span>
+            <span className="public-product-header__brand-row lvc-brand-title-row">
+              <strong className="lvc-word-white">LVC</strong>
+              <strong className="lvc-word-gold">Studio</strong>
             </span>
+            <small className="lvc-brand-sub">REVIEW &amp; AUTO DUB PRO</small>
           </span>
         </a>
 
@@ -60,17 +76,20 @@ export default function Header({
           {mobileMenuOpen ? '✕' : 'Menu'}
         </button>
 
-        {/* Main Navigation (Focused 100% on LVC Studio) */}
+        {/* Main Navigation */}
         <nav
           id="lvcstudio-navigation"
           className={mobileMenuOpen ? 'is-open' : ''}
-          aria-label="Điều hướng LVC Studio"
+          aria-label="Điều hướng LVCStudio"
         >
           <a className="is-active" aria-current="page" href="#top" onClick={() => setMobileMenuOpen(false)}>
             {isEn ? 'Home' : 'Trang chủ'}
           </a>
+          <a href="#kho-mau" onClick={() => setMobileMenuOpen(false)}>
+            {isEn ? '1-Click Templates' : 'Kho mẫu 1-Click'}
+          </a>
           <a href="#demo" onClick={() => setMobileMenuOpen(false)}>
-            {isEn ? 'Live Demo' : 'Video Thực Tế'}
+            {isEn ? 'Live Videos' : 'Video Thực Tế'}
           </a>
           <a href="#features" onClick={() => setMobileMenuOpen(false)}>
             {isEn ? 'Features' : 'Tính năng'}
@@ -78,21 +97,18 @@ export default function Header({
           <a href="#workflow" onClick={() => setMobileMenuOpen(false)}>
             {isEn ? 'Workflow' : 'Quy trình'}
           </a>
-          <a href="#showcase" onClick={() => setMobileMenuOpen(false)}>
-            {isEn ? 'Showcase' : 'Dự án mẫu'}
-          </a>
           <a href="#pricing" onClick={() => setMobileMenuOpen(false)}>
             {isEn ? 'Pricing' : 'Bảng giá'}
           </a>
           <a href="#huong-dan" onClick={() => setMobileMenuOpen(false)}>
-            {isEn ? 'Guides' : 'Hướng dẫn'}
+            {isEn ? 'Library' : 'Thư viện'}
           </a>
           <a className="gen-support-nav" href="#faq" onClick={() => setMobileMenuOpen(false)}>
             {isEn ? 'FAQ' : 'Hỗ trợ'}
           </a>
         </nav>
 
-        {/* Right Actions: Language + Theme + Studio YouTube Config + CTA */}
+        {/* Right Actions: Language + Theme + CTA */}
         <div className="public-product-header__actions">
           <div className="public-product-header__utility-zone">
             <div className="header-controls-group">
@@ -186,7 +202,7 @@ export default function Header({
 
           <div className="public-product-header__account-zone">
             <a className="public-product-header__cta" href="#pricing">
-              {isEn ? 'Get LVC Studio' : 'Tải LVC Studio'}
+              {isEn ? 'Get LVCStudio' : 'Tải LVCStudio'}
               <span aria-hidden="true">→</span>
             </a>
           </div>

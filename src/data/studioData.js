@@ -1,4 +1,4 @@
-// Bộ dữ liệu trung tâm cho LVC Studio (Tích hợp trực tiếp 6 video thực tế từ thư mục /video/ trên nền UI/UX chuẩn GenStudio 60FPS)
+// Bộ dữ liệu trung tâm cho LVCStudio — Review & Auto Dub Pro (Kho mẫu 1-Click + 6 Video thực tế từ /video/)
 
 export const CONTACT_INFO = {
   phoneRaw: '0945711375',
@@ -8,44 +8,121 @@ export const CONTACT_INFO = {
   facebookUrl: 'https://www.facebook.com/profile.php?id=100092372321965',
   youtubeUrl: 'https://www.youtube.com/@LVCMediaTool',
   youtubeHandle: '@LVCMediaTool',
+  realAppScreenshot: '/images/lvcstudio-app-real.png',
 };
 
-// Danh sách 6 Video Thực Tế trong thư mục /video/ của LVC Studio
+// 8 Mẫu Kịch Bản & Preset Dựng Sẵn 1-Click (Lấy chính xác từ giao diện thật LVCStudio — Kho mẫu Kịch bản)
+export const ONE_CLICK_TEMPLATES = [
+  {
+    id: 'tpl-1',
+    category: 'ĐA NGÔN NGỮ',
+    title: 'Dịch Đa Ngôn Ngữ - Sang Tiếng Anh (English Global Shorts)',
+    specs: 'LVC Studio ▷ 9:16 · Thêm viền · Làm mờ sub gốc',
+    poster: '/video/posters/douyin_7695233377897414577.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Tự động làm mờ sub gốc, dịch sang tiếng Anh chuẩn quốc tế và đóng khung 9:16 chỉ với 1 click.',
+  },
+  {
+    id: 'tpl-2',
+    category: 'BỐ CỤC 2 VIDEO',
+    title: 'Ghép 2 Video Trên-Dưới (Reaction TikTok) | BỐ CỤC 2 VIDEO',
+    specs: 'LVC Studio ▷ 9:16 · Cắt vừa khung · Làm mờ sub gốc',
+    poster: '/video/posters/douyin_7696086855386003825.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Dựng sẵn bố cục ghép 2 luồng video trên-dưới chuẩn Reaction TikTok/Shorts không cần căn chỉnh thủ công.',
+  },
+  {
+    id: 'tpl-3',
+    category: 'ANIME / 3D',
+    title: 'Hoạt Hình - Anime 2D/3D Rực Rỡ (9:16 Shorts) | ANIME / 3D',
+    specs: 'LVC Studio ▷ 9:16 · Lấp đầy · Làm mờ sub gốc · Miễn phí',
+    poster: '/video/posters/douyin_7697094101003515641.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Tối ưu màu sắc rực rỡ, lấp đầy khung dọc 9:16 và lồng tiếng AI năng lượng cao cho kênh Hoạt hình/3D.',
+  },
+  {
+    id: 'tpl-4',
+    category: 'NGÔN TÌNH',
+    title: 'Phim Tổng Tài - Ngôn Tình Đô Thị (Giọng Nữ Dịu Dàng)',
+    specs: 'LVC Studio ▷ 9:16 · Cắt vừa khung · Làm mờ sub gốc',
+    poster: '/video/posters/douyin_7696489073725473723.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Cấu hình sẵn giọng đọc nữ truyền cảm, xóa sub gốc và lên phụ đề chuẩn kênh Review Phim Tổng Tài.',
+  },
+  {
+    id: 'tpl-5',
+    category: 'HÀI GENZ',
+    title: 'Review Hài Hước - Bắt Trend GenZ (TikTok Sôi Nổi) | HÀI GENZ',
+    specs: 'LVC Studio ▷ 9:16 · Lấp đầy · Làm mờ sub gốc · Miễn phí',
+    poster: '/video/posters/douyin_7699062355951235057.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Tự động dịch theo văn phong hài hước bắt trend GenZ kèm giọng đọc sôi nổi cuốn hút người xem.',
+  },
+  {
+    id: 'tpl-6',
+    category: 'VIDEO LỒNG PIP',
+    title: 'Review Phim Lồng Video PiP - Tiên Hiệp & Mỹ Nhân (9:16)',
+    specs: 'LVC Studio ▷ 9:16 · Lấp đầy · Lật gương · Miễn phí',
+    poster: '/video/posters/douyin_7697826383670454513.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Tích hợp sẵn khung lồng video PiP (Picture-in-Picture), lật gương chống bản quyền và làm mờ sub gốc.',
+  },
+  {
+    id: 'tpl-7',
+    category: 'PHIM TRUNG',
+    title: 'Review Phim Trung Quốc - Xoá Sub Gốc + Lồng Tiếng AI',
+    specs: 'LVC Studio ▷ 9:16 · Lấp đầy · Làm mờ sub gốc · Miễn phí',
+    poster: '/video/posters/douyin_7696086855386003825.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Quy trình chuẩn cho kênh Review Phim Trung: OCR nhận diện, xóa sạch sub gốc và lồng tiếng Việt tự động.',
+  },
+  {
+    id: 'tpl-8',
+    category: 'REVIEW PHIM BLUR',
+    title: 'Review Phim Viền Mờ + 2 Dải Chữ Trắng (TikTok Viral)',
+    specs: 'LVC Studio ▷ 9:16 · Thêm viền · Làm mờ sub gốc · Miễn phí',
+    poster: '/video/posters/douyin_7696489073725473723.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Tạo sẵn nền viền mờ (Blur Background) kèm 2 dải tiêu đề chữ trắng trên-dưới chuẩn phong cách TikTok Viral.',
+  },
+];
+
+// Danh sách 6 Video Thực Tế trong thư mục /video/ của LVCStudio
 export const LOCAL_STUDIO_VIDEOS = [
   {
     id: 'vid-1',
     url: '/video/douyin_7695233377897414577.mp4',
     poster: '/video/posters/douyin_7695233377897414577.jpg',
     duration: '00:54',
-    badge: 'LVC STUDIO · VIDEO 01',
+    badge: 'LVCSTUDIO · VIDEO 01',
     resolution: '1920x1080 · 60FPS',
     title: 'Video 01: Hoạt họa AI Ngõa Miêu Cổ Phong (1080p Full HD)',
     titleEn: 'Video 01: AI Ancient Tile Cat Animation (1080p Full HD)',
     description:
-      'Video gốc độ phân giải cao 1080p được nạp trực tiếp vào hàng đợi xử lý của LVC Studio.',
+      'Video gốc độ phân giải cao 1080p được nạp trực tiếp vào hàng đợi xử lý của LVCStudio.',
     descriptionEn:
-      'High-definition 1080p source video loaded directly into the LVC Studio processing queue.',
+      'High-definition 1080p source video loaded directly into the LVCStudio processing queue.',
   },
   {
     id: 'vid-2',
     url: '/video/douyin_7696086855386003825.mp4',
     poster: '/video/posters/douyin_7696086855386003825.jpg',
     duration: '00:50',
-    badge: 'LVC STUDIO · VIỆT HÓA AI',
+    badge: 'LVCSTUDIO · VIỆT HÓA AI',
     resolution: '1920x1080 · Sub & Dub',
     title: 'Video 02: Dịch Phụ Đề Song Ngữ & Lồng Tiếng AI (“Đừng mơ mà trốn”)',
     titleEn: 'Video 02: Bilingual Subtitle & AI Voice Dubbing Output',
     description:
-      'Thành phẩm tự động nhận diện lời thoại, dịch phụ đề tiếng Việt chuẩn ngữ cảnh và đồng bộ thời gian thực trên LVC Studio.',
+      'Thành phẩm tự động nhận diện lời thoại, dịch phụ đề tiếng Việt chuẩn ngữ cảnh và đồng bộ thời gian thực trên LVCStudio.',
     descriptionEn:
-      'Automated speech recognition, context-aware Vietnamese subtitle translation, and real-time sync in LVC Studio.',
+      'Automated speech recognition, context-aware Vietnamese subtitle translation, and real-time sync in LVCStudio.',
   },
   {
     id: 'vid-3',
     url: '/video/douyin_7696489073725473723.mp4',
     poster: '/video/posters/douyin_7696489073725473723.jpg',
     duration: '00:24',
-    badge: 'LVC STUDIO · TIÊN HIỆP AI',
+    badge: 'LVCSTUDIO · TIÊN HIỆP AI',
     resolution: '1920x1080 · Việt Hóa',
     title: 'Video 03: Việt Hóa Phim Ngắn Tiên Hiệp AI (“Tung tơ nhung vi diệu”)',
     titleEn: 'Video 03: Fantasy AI Short Film Vietnamese Localization',
@@ -59,35 +136,35 @@ export const LOCAL_STUDIO_VIDEOS = [
     url: '/video/douyin_7697094101003515641.mp4',
     poster: '/video/posters/douyin_7697094101003515641.jpg',
     duration: '00:39',
-    badge: 'LVC STUDIO · VISUAL 4K',
+    badge: 'LVCSTUDIO · VISUAL 4K',
     resolution: '1920x1080 · GPU NVENC',
     title: 'Video 04: Nghệ Thuật Kẹo Đường Cổ Phong (Tối ưu Render GPU)',
     titleEn: 'Video 04: Traditional Sugar Art Visuals (GPU Accelerated)',
     description:
-      'Xử lý khung hình chuyển động nhanh với tốc độ cao nhờ công nghệ mã hóa phần cứng CUDA/NVENC trên LVC Studio.',
+      'Xử lý khung hình chuyển động nhanh với tốc độ cao nhờ công nghệ mã hóa phần cứng CUDA/NVENC trên LVCStudio.',
     descriptionEn:
-      'High-motion particle visuals rendered cleanly with CUDA/NVENC hardware acceleration in LVC Studio.',
+      'High-motion particle visuals rendered cleanly with CUDA/NVENC hardware acceleration in LVCStudio.',
   },
   {
     id: 'vid-5',
     url: '/video/douyin_7697826383670454513.mp4',
     poster: '/video/posters/douyin_7697826383670454513.jpg',
     duration: '00:35',
-    badge: 'LVC STUDIO · HỘI HỌA AI',
+    badge: 'LVCSTUDIO · HỘI HỌA AI',
     resolution: '1920x1080 · 60FPS',
     title: 'Video 05: Tuyệt Kỹ Vẽ Rồng Phát Sáng Trên Gốm Sứ',
     titleEn: 'Video 05: Luminous Dragon Porcelain Painting AI Video',
     description:
-      'Giữ trọn độ sâu màu sắc và hiệu ứng ánh sáng neon khi xử lý hàng loạt qua LVC Studio.',
+      'Giữ trọn độ sâu màu sắc và hiệu ứng ánh sáng neon khi xử lý hàng loạt qua LVCStudio.',
     descriptionEn:
-      'Preserves deep color grading and neon glow details during batch processing in LVC Studio.',
+      'Preserves deep color grading and neon glow details during batch processing in LVCStudio.',
   },
   {
     id: 'vid-6',
     url: '/video/douyin_7699062355951235057.mp4',
     poster: '/video/posters/douyin_7699062355951235057.jpg',
     duration: '00:12',
-    badge: 'LVC STUDIO · SHORT 9:16',
+    badge: 'LVCSTUDIO · SHORT 9:16',
     resolution: '720x1280 · Vertical 9:16',
     title: 'Video 06: Short Clip Dọc 9:16 Đóng Phụ Đề Viral (“xẻo thấy bà!”)',
     titleEn: 'Video 06: 9:16 Vertical Short Clip with Viral Vietnamese Subtitles',
@@ -103,16 +180,16 @@ export const DEMO_VIDEO_TABS = [
   {
     id: 'pair-1',
     name: 'Cặp Video 01 · Việt Hóa & Lồng Tiếng',
-    vi: 'Trải nghiệm trực tiếp các video thực tế trong thư mục /video/ của LVC Studio: từ video gốc đến thành phẩm dịch phụ đề tiếng Việt sắc nét.',
-    en: 'Watch real videos from the /video/ directory processed by LVC Studio: from raw input to localized Vietnamese subtitle output.',
+    vi: 'Trải nghiệm trực tiếp các video thực tế trong thư mục /video/ của LVCStudio: từ video gốc đến thành phẩm dịch phụ đề tiếng Việt sắc nét.',
+    en: 'Watch real videos from the /video/ directory processed by LVCStudio: from raw input to localized Vietnamese subtitle output.',
     leftVideo: LOCAL_STUDIO_VIDEOS[0],
     rightVideo: LOCAL_STUDIO_VIDEOS[1],
   },
   {
     id: 'pair-2',
     name: 'Cặp Video 02 · Tiên Hiệp & Cổ Phong',
-    vi: 'Chất lượng hình ảnh Full HD 1080p và phụ đề văn phong cổ trang mượt mà được xử lý trực tiếp bởi LVC Studio.',
-    en: 'Full HD 1080p visual quality and natural Vietnamese fantasy subtitles processed directly by LVC Studio.',
+    vi: 'Chất lượng hình ảnh Full HD 1080p và phụ đề văn phong cổ trang mượt mà được xử lý trực tiếp bởi LVCStudio.',
+    en: 'Full HD 1080p visual quality and natural Vietnamese fantasy subtitles processed directly by LVCStudio.',
     leftVideo: LOCAL_STUDIO_VIDEOS[2],
     rightVideo: LOCAL_STUDIO_VIDEOS[3],
   },
@@ -135,29 +212,29 @@ export const DEMO_VIDEO_TABS = [
 
 export const STUDIO_WORKSPACES = [
   {
-    id: 'workspace-main',
-    previewMode: 'workspace',
-    tabLabel: 'LVC Studio Core',
-    name: 'LVC Studio — Bảng Điều Khiển Trung Tâm',
-    nameEn: 'LVC Studio — Unified Master Workspace',
-    tagline: 'Tự động hóa sản xuất & xử lý video đa luồng trên PC',
-    taglineEn: 'Automated video production & multi-thread GPU processing',
-    alt: 'LVC Studio — Giao diện Focus, hàng đợi video và chỉnh sửa phụ đề AI',
-    altEn: 'LVC Studio — Focus workspace, media queue, and AI subtitle timeline',
-    accentColor: '#22d3ee',
+    id: 'workspace-templates',
+    previewMode: 'real-app',
+    tabLabel: 'Kho Mẫu 1-Click',
+    name: 'LVCStudio — Kho Mẫu Kịch Bản Dựng Sẵn (Chỉ 1 Click)',
+    nameEn: 'LVCStudio — 1-Click Ready-Made Script & Preset Store',
+    tagline: 'Chọn mẫu dựng sẵn → Bấm "Áp dụng vào Studio" chỉ 1 Click không cần setup nhiều',
+    taglineEn: 'Pick a ready-made template → Click "Apply to Studio" with zero complex setup',
+    alt: 'Giao diện thực tế Kho mẫu Kịch bản của phần mềm LVCStudio — Review & Auto Dub Pro',
+    altEn: 'Real screenshot of LVCStudio — Review & Auto Dub Pro 1-Click Template Store',
+    accentColor: '#f59e0b',
     portalGradient:
-      'radial-gradient(ellipse at center, rgba(34, 211, 238, 0.22) 0%, rgba(99, 102, 241, 0.15) 38%, transparent 72%)',
+      'radial-gradient(ellipse at center, rgba(245, 158, 11, 0.24) 0%, rgba(34, 211, 238, 0.15) 42%, transparent 72%)',
   },
   {
     id: 'workspace-voice',
     previewMode: 'voice',
-    tabLabel: 'AI Dub & Sub',
-    name: 'LVC Studio — Dịch Phụ Đề & Lồng Tiếng AI',
-    nameEn: 'LVC Studio — AI Subtitle & Neural Dubbing',
-    tagline: 'Nhận diện giọng nói, dịch đa ngôn ngữ & đồng bộ 99.8%',
-    taglineEn: 'Speech recognition, multi-language translation & 99.8% sync',
-    alt: 'LVC Studio — Mô-đun dịch phụ đề và lồng tiếng AI tự nhiên',
-    altEn: 'LVC Studio — AI subtitle translation and neural voice dubbing',
+    tabLabel: 'Xoá Sub & AI Dub',
+    name: 'LVCStudio — Xoá Sub Gốc, Dịch & Lồng Tiếng AI',
+    nameEn: 'LVCStudio — Sub Eraser, Translation & AI Dubbing',
+    tagline: 'OCR nhận diện phụ đề, làm mờ sub gốc & lồng tiếng AI tự động',
+    taglineEn: 'OCR subtitle detection, original sub blur & automated AI voice dubbing',
+    alt: 'LVCStudio — Mô-đun làm mờ sub gốc và lồng tiếng AI tự nhiên',
+    altEn: 'LVCStudio — Subtitle blur and neural voice dubbing module',
     accentColor: '#06b6d4',
     portalGradient:
       'radial-gradient(ellipse at center, rgba(6, 182, 212, 0.22) 0%, rgba(37, 99, 235, 0.14) 38%, transparent 72%)',
@@ -165,13 +242,13 @@ export const STUDIO_WORKSPACES = [
   {
     id: 'workspace-shorts',
     previewMode: 'shorts',
-    tabLabel: 'Auto Short 9:16',
-    name: 'LVC Studio — Cắt Highlight & Khung Dọc 9:16',
-    nameEn: 'LVC Studio — Viral Highlight & 9:16 Reframe',
-    tagline: 'Tự động bắt tâm điểm khuôn mặt & tạo caption nhảy chữ',
-    taglineEn: 'Automated face-tracking reframe & dynamic karaoke captions',
-    alt: 'LVC Studio — Tự động cắt clip ngắn 9:16 và tạo phụ đề viral',
-    altEn: 'LVC Studio — Smart 9:16 vertical reframe and viral captions',
+    tabLabel: 'Ghép 2 Video & PiP',
+    name: 'LVCStudio — Ghép Reaction, Lồng PiP & Khung 9:16',
+    nameEn: 'LVCStudio — Split Reaction, PiP & 9:16 Viral Framing',
+    tagline: 'Bố cục 2 video trên-dưới, lồng PiP, viền mờ & 2 dải chữ trắng viral',
+    taglineEn: 'Top-bottom split video, PiP overlay, blur border & viral title bars',
+    alt: 'LVCStudio — Tự động ghép bố cục 9:16 và đóng phụ đề viral',
+    altEn: 'LVCStudio — Automated 9:16 vertical layouts and viral captions',
     accentColor: '#38bdf8',
     portalGradient:
       'radial-gradient(ellipse at center, rgba(56, 189, 248, 0.22) 0%, rgba(139, 92, 246, 0.15) 38%, transparent 72%)',
@@ -179,13 +256,13 @@ export const STUDIO_WORKSPACES = [
   {
     id: 'workspace-batch',
     previewMode: 'batch',
-    tabLabel: 'GPU Batch x10',
-    name: 'LVC Studio — Render Hàng Loạt Đa Luồng GPU',
-    nameEn: 'LVC Studio — Multi-Thread GPU Batch Engine',
-    tagline: 'Khai thác 100% sức mạnh phần cứng CUDA/NVENC không giới hạn',
-    taglineEn: '100% hardware-accelerated CUDA/NVENC unlimited batch export',
-    alt: 'LVC Studio — Hệ thống xử lý và xuất video hàng loạt bằng GPU',
-    altEn: 'LVC Studio — High-speed hardware GPU batch rendering system',
+    tabLabel: 'Hàng Đợi & GPU x10',
+    name: 'LVCStudio — Hàng Đợi Kịch Bản & Render GPU',
+    nameEn: 'LVCStudio — Script Queue & Multi-Thread GPU Engine',
+    tagline: 'Tạo hàng chục video Review & Shorts tự động 100% bằng phần cứng GPU',
+    taglineEn: 'Produce dozens of Review & Short videos automatically via hardware GPU',
+    alt: 'LVCStudio — Hệ thống xử lý và xuất video hàng loạt bằng GPU',
+    altEn: 'LVCStudio — High-speed hardware GPU batch rendering system',
     accentColor: '#a855f7',
     portalGradient:
       'radial-gradient(ellipse at center, rgba(168, 85, 247, 0.22) 0%, rgba(217, 70, 239, 0.13) 38%, transparent 72%)',
@@ -194,9 +271,9 @@ export const STUDIO_WORKSPACES = [
 
 // Dữ liệu mặc định cho Modal cấu hình Video
 export const LVC_DEMO_DEFAULT = {
-  name: 'LVC Studio',
-  vi: 'Trải nghiệm trực tiếp 6 video thực tế trong thư mục /video/ được xử lý bởi LVC Studio: từ dịch phụ đề, lồng tiếng đến Short 9:16.',
-  en: 'Experience the 6 real videos from your /video/ directory processed by LVC Studio.',
+  name: 'LVCStudio',
+  vi: 'Trải nghiệm trực tiếp 6 video thực tế trong thư mục /video/ được xử lý bởi LVCStudio: chỉ 1 Click áp dụng mẫu từ Kho Kịch Bản Dựng Sẵn.',
+  en: 'Experience the 6 real videos from your /video/ directory processed by LVCStudio with 1-Click Templates.',
   beforeUrl: LOCAL_STUDIO_VIDEOS[0].url,
   beforeLabelVi: LOCAL_STUDIO_VIDEOS[0].title,
   beforeLabelEn: LOCAL_STUDIO_VIDEOS[0].titleEn,
@@ -206,16 +283,16 @@ export const LVC_DEMO_DEFAULT = {
   afterLabelEn: LOCAL_STUDIO_VIDEOS[1].titleEn,
   afterDuration: `${LOCAL_STUDIO_VIDEOS[1].duration} · ${LOCAL_STUDIO_VIDEOS[1].resolution}`,
   highlights: [
-    'Phát trực tiếp 6 video từ thư mục /video/',
-    'Chỉ tải ảnh Poster nhẹ · Không lag trang',
-    'Hỗ trợ cả file .mp4 nội bộ lẫn link YouTube',
+    'Kho Mẫu Kịch Bản 1-Click · Không cần setup nhiều',
+    'Làm mờ sub gốc · Ghép PiP · Lồng tiếng AI tự động',
+    'Lưu trữ Local an toàn · Render GPU tốc độ cao',
   ],
 };
 
 // Playlist 6 Video Thực Tế từ thư mục /video/ trong mục #huong-dan
 export const GUIDE_VIDEOS_DEFAULT = LOCAL_STUDIO_VIDEOS;
 
-// Danh sách Kênh & Cộng đồng chính thức của LVC Studio
+// Danh sách Kênh & Cộng đồng chính thức của LVCStudio
 export const VIRAL_CHANNELS = [
   {
     id: 'ch-1',
@@ -226,20 +303,20 @@ export const VIRAL_CHANNELS = [
     likeCount: 6100000,
     featured: true,
     description:
-      'Kênh YouTube chính thức của LVC Studio (@LVCMediaTool) — Tổng hợp video demo thực tế, hướng dẫn sử dụng và cập nhật tính năng mới.',
+      'Kênh YouTube chính thức của LVCStudio (@LVCMediaTool) — Tổng hợp video demo thực tế, hướng dẫn Kho Mẫu 1-Click và cập nhật tính năng mới.',
     channelUrl: 'https://www.youtube.com/@LVCMediaTool',
     gradient: 'linear-gradient(135deg, #ef4444 0%, #991b1b 55%, #0f172a 100%)',
   },
   {
     id: 'ch-2',
-    channelName: 'LVC Studio Fanpage',
+    channelName: 'LVCStudio Fanpage',
     handle: 'fb.com/100092372321965',
     platform: 'facebook',
     followerCount: 360000,
     likeCount: 9200000,
     featured: true,
     description:
-      'Trang Facebook chính thức hỗ trợ khách hàng, chia sẻ quy trình tự động hóa sản xuất video đa kênh bằng LVC Studio.',
+      'Trang Facebook chính thức hỗ trợ khách hàng, chia sẻ mẫu kịch bản 1-Click làm video Review & Auto Dub đa kênh.',
     channelUrl: 'https://www.facebook.com/profile.php?id=100092372321965',
     gradient: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #090d16 100%)',
   },
@@ -252,20 +329,20 @@ export const VIRAL_CHANNELS = [
     likeCount: 12400000,
     featured: true,
     description:
-      'Hệ thống kênh Short 9:16 vận hành và sản xuất nội dung tự động hóa 100% trên nền tảng LVC Studio.',
+      'Hệ thống kênh Review Phim & Short 9:16 vận hành tự động bằng Kho Mẫu 1-Click trên nền tảng LVCStudio.',
     channelUrl: 'https://www.youtube.com/@LVCMediaTool',
-    gradient: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #1e1b4b 100%)',
+    gradient: 'linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #1e1b4b 100%)',
   },
   {
     id: 'ch-4',
-    channelName: 'Cộng đồng LVC Studio',
+    channelName: 'Cộng đồng LVCStudio',
     handle: 'Zalo 0945.711.375 · Telegram',
     platform: 'youtube',
     followerCount: 185000,
     likeCount: 4100000,
     featured: false,
     description:
-      'Cộng đồng nhà sáng tạo sử dụng LVC Studio để xây dựng hệ thống kênh đa nền tảng bền vững.',
+      'Cộng đồng chia sẻ Preset & Mẫu kịch bản LVCStudio miễn phí giúp xây dựng hệ thống kênh đa nền tảng bền vững.',
     channelUrl: 'https://t.me/+E0eT0EoKhZIzNjJl',
     gradient: 'linear-gradient(135deg, #0891b2 0%, #1e3a8a 55%, #090d16 100%)',
   },

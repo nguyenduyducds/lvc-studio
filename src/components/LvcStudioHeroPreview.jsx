@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { LOCAL_STUDIO_VIDEOS } from '../data/studioData';
+import { CONTACT_INFO, LOCAL_STUDIO_VIDEOS } from '../data/studioData';
+import { LvcClapperboardLogo } from './Header';
 
 /**
- * LvcStudioHeroPreview — Giao diện LVC Studio Pro tương tác trực tiếp ngay ở khung Hero bên phải.
- * - Khi người dùng bấm phát video hoặc chọn video trong hàng đợi, tự động khóa xoay vòng slide (onInteractPause).
- * - Khi chuyển sang Tab khác (isCurrent = false), tự động dừng và gỡ thẻ <video> để không bao giờ bị kẹt âm thanh ngầm.
+ * LvcStudioHeroPreview — Giao diện LVCStudio (Review & Auto Dub Pro) ở khung Hero bên phải.
+ * - Tab 01 (previewMode === 'real-app'): Hiển thị ảnh chụp giao diện thật LVCStudio (/images/lvcstudio-app-real.png)
+ *   với Kho mẫu Kịch bản 1-Click ("Áp dụng vào Studio" không cần setup nhiều), có nút chuyển nhanh sang phát Video thật.
+ * - Các Tab khác hoặc khi bấm "Phát Video Thực Tế": Hiển thị trình phát 6 video thực tế trong /video/.
+ * - Tự động khóa xoay vòng slide khi người dùng tương tác và tự tắt âm thanh khi chuyển Tab.
  */
 export default function LvcStudioHeroPreview({
   slide,
@@ -12,10 +15,9 @@ export default function LvcStudioHeroPreview({
   isCurrent = true,
   onInteractPause,
 }) {
-  const accent = slide?.accentColor || '#22d3ee';
+  const accent = slide?.accentColor || '#f59e0b';
   const videoRef = useRef(null);
 
-  // Map mỗi Tab Hero (01..04) sang video mặc định tương ứng trong /video/
   const defaultVideoIdx =
     slide?.previewMode === 'voice'
       ? 1
@@ -23,28 +25,31 @@ export default function LvcStudioHeroPreview({
         ? 5
         : slide?.previewMode === 'batch'
           ? 4
-          : 2;
+          : 0;
 
   const [selectedVideoIdx, setSelectedVideoIdx] = useState(defaultVideoIdx);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [forceVideoWorkspace, setForceVideoWorkspace] = useState(false);
 
-  // Nếu slide này không còn là slide đang hiển thị (isCurrent = false), lập tức tắt video & dừng âm thanh
+  // Khi đổi slide, reset chế độ xem về mặc định của slide đó và tắt video nếu slide ẩn
   useEffect(() => {
-    if (!isCurrent && isPlaying) {
+    if (!isCurrent) {
       if (videoRef.current) {
         videoRef.current.pause();
         videoRef.current.currentTime = 0;
       }
       setIsPlaying(false);
+      setForceVideoWorkspace(false);
     }
-  }, [isCurrent, isPlaying]);
+  }, [isCurrent]);
 
   const activeVideo = LOCAL_STUDIO_VIDEOS[selectedVideoIdx] || LOCAL_STUDIO_VIDEOS[0];
+  const showRealAppScreenshot = slide?.previewMode === 'real-app' && !forceVideoWorkspace;
 
   const handleStartPlay = (e) => {
     e.stopPropagation();
-    // Khóa tự động chuyển tab của Hero ngay khi người dùng bấm xem video
     if (onInteractPause) onInteractPause(true);
+    setForceVideoWorkspace(true);
     setIsPlaying(true);
   };
 
@@ -63,7 +68,7 @@ export default function LvcStudioHeroPreview({
       videoRef.current.pause();
     }
     setSelectedVideoIdx(idx);
-    setIsPlaying(true); // Phát luôn video vừa chọn trong hàng đợi
+    setIsPlaying(true);
   };
 
   return (
@@ -71,7 +76,7 @@ export default function LvcStudioHeroPreview({
       className="lvc-hero-studio-shell"
       style={{ '--studio-accent': accent }}
     >
-      {/* 1. Thanh tiêu đề cửa sổ LVC Studio Pro */}
+      {/* 1. Thanh tiêu đề cửa sổ LVCStudio chính thức */}
       <div className="lvc-hero-titlebar">
         <div className="lvc-hero-dots" aria-hidden="true">
           <span className="dot-r" />
@@ -80,149 +85,208 @@ export default function LvcStudioHeroPreview({
         </div>
 
         <div className="lvc-hero-appname">
-          <span className="lvc-hero-logo-badge">L</span>
-          <strong>{isEn ? slide.nameEn : slide.name}</strong>
+          <LvcClapperboardLogo size={22} />
+          <strong>
+            <span className="lvc-word-white">LVC</span>
+            <span className="lvc-word-gold">Studio</span>
+            <span className="lvc-hero-title-sep">·</span>
+            <span>{isEn ? slide.nameEn : slide.name}</span>
+          </strong>
         </div>
 
         <div className="lvc-hero-hw-pill">
           <i className="hw-live-dot" />
-          <span>CUDA · NVENC 60FPS</span>
+          <span>1-CLICK PRESET · GPU 60FPS</span>
         </div>
       </div>
 
-      {/* 2. Thân chính Studio: Cột Trái (Hàng đợi 6 Video thật) + Cột Giữa (Màn hình Video thật) */}
-      <div className="lvc-hero-workspace">
-        {/* Cột trái: Hàng đợi 6 Video trong thư mục /video/ */}
-        <aside className="lvc-hero-queue">
-          <div className="lvc-hero-panel-head">
-            <span>{isEn ? 'PROJECT QUEUE (/video)' : 'HÀNG ĐỢI VIDEO (/video)'}</span>
-            <b>6 FILE</b>
-          </div>
+      {/* 2. Chế độ A: Ảnh chụp giao diện thật LVCStudio — Kho mẫu Kịch bản 1-Click */}
+      {showRealAppScreenshot ? (
+        <div className="lvc-hero-real-shot-wrap">
+          <img
+            src={CONTACT_INFO.appScreenshot}
+            alt="Giao diện phần mềm LVCStudio — Review & Auto Dub Pro với Kho mẫu Kịch bản 1-Click"
+            className="lvc-hero-real-shot-img"
+            loading="eager"
+          />
 
-          <div className="lvc-hero-queue-list">
-            {LOCAL_STUDIO_VIDEOS.slice(0, 4).map((vid, idx) => {
-              const isSelected = selectedVideoIdx === idx;
-              return (
-                <button
-                  key={vid.id}
-                  type="button"
-                  className={`lvc-hero-queue-item ${isSelected ? 'is-active' : ''}`}
-                  onClick={(e) => handleSelectQueueItem(e, idx)}
-                >
-                  <img
-                    src={vid.poster}
-                    alt=""
-                    className="lvc-hero-queue-thumb"
-                    loading="eager"
-                  />
-                  <div className="lvc-hero-queue-meta">
-                    <strong>{vid.title.replace(/^Video \d+:\s*/, '')}</strong>
-                    <small>{vid.duration} · {vid.resolution}</small>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="lvc-hero-gpu-box">
-            <div className="gpu-box-row">
-              <span>⚡ GPU RTX NVENC</span>
-              <b>4.8x Speed</b>
+          <div className="lvc-hero-real-overlay">
+            <div className="lvc-hero-real-badge-row">
+              <span className="lvc-real-pill-gold">
+                ✨ GIAO DIỆN THẬT LVCSTUDIO
+              </span>
+              <span className="lvc-real-pill-cyan">
+                ⚡ Template dựng sẵn chỉ 1 Click · Không cần setup nhiều
+              </span>
             </div>
-            <div className="gpu-box-bar">
-              <i style={{ width: '86%' }} />
-            </div>
-            <small>VRAM: 4.2 GB · 100% Local PC</small>
-          </div>
-        </aside>
 
-        {/* Cột phải/giữa: Màn hình Preview Video Thực Tế + Timeline */}
-        <div className="lvc-hero-main">
-          <div className="lvc-hero-monitor">
-            {isCurrent && isPlaying ? (
-              <div className="lvc-hero-video-wrap">
-                <video
-                  ref={videoRef}
-                  key={activeVideo.url}
-                  src={activeVideo.url}
-                  poster={activeVideo.poster}
-                  controls
-                  autoPlay
-                  playsInline
-                  className="lvc-hero-video-player"
-                  onClick={(e) => e.stopPropagation()}
-                  onPlay={() => {
-                    if (onInteractPause) onInteractPause(true);
-                  }}
-                />
-                <button
-                  type="button"
-                  className="lvc-hero-video-close"
-                  onClick={handleStopPlay}
-                  title={isEn ? 'Stop & Close Video' : 'Tắt Video'}
-                >
-                  ✕ {isEn ? 'Stop' : 'Tắt video'}
-                </button>
-              </div>
-            ) : (
+            <div className="lvc-hero-real-actions">
+              <a
+                href="#kho-mau"
+                className="lvc-real-action-btn primary"
+                onClick={(e) => e.stopPropagation()}
+              >
+                🎁 Xem 8 Mẫu 1-Click ↓
+              </a>
               <button
                 type="button"
-                className="lvc-hero-poster-btn"
+                className="lvc-real-action-btn"
                 onClick={handleStartPlay}
-                aria-label={`Phát ${activeVideo.title}`}
               >
-                <img
-                  src={activeVideo.poster}
-                  alt={activeVideo.title}
-                  className="lvc-hero-poster-img"
-                  loading="eager"
-                />
-                <div className="lvc-hero-poster-scrim" />
-
-                <div className="lvc-hero-monitor-hud-top">
-                  <span className="lvc-hud-badge">{activeVideo.badge}</span>
-                  <span className="lvc-hud-res">{activeVideo.duration} · {activeVideo.resolution}</span>
-                </div>
-
-                <div className="lvc-hero-play-trigger">
-                  <span className="lvc-hero-play-circle">▶</span>
-                  <span className="lvc-hero-play-label">
-                    {isEn ? 'Click to Play Real Video' : 'Bấm để phát Video Thực Tế'}
-                  </span>
-                </div>
-
-                <div className="lvc-hero-sub-box">
-                  <strong>{isEn ? activeVideo.titleEn : activeVideo.title}</strong>
-                  <span>AI SUBTITLE &amp; VOICE SYNC · 99.8% ACCURACY</span>
-                </div>
+                ▶ Phát Video Thành Phẩm
               </button>
-            )}
+            </div>
           </div>
+        </div>
+      ) : (
+        /* 3. Chế độ B: Trình phát 6 Video Thực Tế trong /video/ */
+        <div className="lvc-hero-workspace">
+          {/* Cột trái: Hàng đợi Video trong thư mục /video/ */}
+          <aside className="lvc-hero-queue">
+            <div className="lvc-hero-panel-head">
+              <span>{isEn ? 'PROJECT QUEUE (/video)' : 'HÀNG ĐỢI VIDEO (/video)'}</span>
+              {slide?.previewMode === 'real-app' ? (
+                <button
+                  type="button"
+                  className="lvc-back-to-shot-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleStopPlay(e);
+                    setForceVideoWorkspace(false);
+                  }}
+                >
+                  ← Ảnh Tool
+                </button>
+              ) : (
+                <b>6 FILE</b>
+              )}
+            </div>
 
-          {/* Thanh Timeline Đa Luồng bên dưới Monitor */}
-          <div className="lvc-hero-timeline">
-            <div className="lvc-timeline-playhead" aria-hidden="true" />
-            <div className="lvc-timeline-row">
-              <span className="tl-tag">V1 · 4K</span>
-              <div className="tl-track tl-track--video">
-                <span>{activeVideo.url.replace('/video/', '')}</span>
-              </div>
+            <div className="lvc-hero-queue-list">
+              {LOCAL_STUDIO_VIDEOS.slice(0, 4).map((vid, idx) => {
+                const isSelected = selectedVideoIdx === idx;
+                return (
+                  <button
+                    key={vid.id}
+                    type="button"
+                    className={`lvc-hero-queue-item ${isSelected ? 'is-active' : ''}`}
+                    onClick={(e) => handleSelectQueueItem(e, idx)}
+                  >
+                    <img
+                      src={vid.poster}
+                      alt=""
+                      className="lvc-hero-queue-thumb"
+                      loading="eager"
+                    />
+                    <div className="lvc-hero-queue-meta">
+                      <strong>{vid.title.replace(/^Video \d+:\s*/, '')}</strong>
+                      <small>{vid.duration} · {vid.resolution}</small>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
-            <div className="lvc-timeline-row">
-              <span className="tl-tag">S1 · SUB</span>
-              <div className="tl-track tl-track--sub">
-                <span>[VI] Phụ đề AI tự động đồng bộ chuẩn ngữ cảnh</span>
+
+            <div className="lvc-hero-gpu-box">
+              <div className="gpu-box-row">
+                <span>⚡ 1-CLICK TEMPLATE</span>
+                <b>Auto Setup</b>
               </div>
+              <div className="gpu-box-bar">
+                <i style={{ width: '92%' }} />
+              </div>
+              <small>LVCStudio · Review &amp; Auto Dub Pro</small>
             </div>
-            <div className="lvc-timeline-row">
-              <span className="tl-tag">A1 · DUB</span>
-              <div className="tl-track tl-track--audio">
-                <span>🎙 LVC Neural Voice Track · Tách nhạc nền BGM (-14 LUFS)</span>
+          </aside>
+
+          {/* Cột phải/giữa: Màn hình Preview Video Thực Tế + Timeline */}
+          <div className="lvc-hero-main">
+            <div className="lvc-hero-monitor">
+              {isCurrent && isPlaying ? (
+                <div className="lvc-hero-video-wrap">
+                  <video
+                    ref={videoRef}
+                    key={activeVideo.url}
+                    src={activeVideo.url}
+                    poster={activeVideo.poster}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="lvc-hero-video-player"
+                    onClick={(e) => e.stopPropagation()}
+                    onPlay={() => {
+                      if (onInteractPause) onInteractPause(true);
+                    }}
+                  />
+                  <button
+                    type="button"
+                    className="lvc-hero-video-close"
+                    onClick={handleStopPlay}
+                    title={isEn ? 'Stop & Close Video' : 'Tắt Video'}
+                  >
+                    ✕ {isEn ? 'Stop' : 'Tắt video'}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="lvc-hero-poster-btn"
+                  onClick={handleStartPlay}
+                  aria-label={`Phát ${activeVideo.title}`}
+                >
+                  <img
+                    src={activeVideo.poster}
+                    alt={activeVideo.title}
+                    className="lvc-hero-poster-img"
+                    loading="eager"
+                  />
+                  <div className="lvc-hero-poster-scrim" />
+
+                  <div className="lvc-hero-monitor-hud-top">
+                    <span className="lvc-hud-badge">{activeVideo.badge}</span>
+                    <span className="lvc-hud-res">{activeVideo.duration} · {activeVideo.resolution}</span>
+                  </div>
+
+                  <div className="lvc-hero-play-trigger">
+                    <span className="lvc-hero-play-circle">▶</span>
+                    <span className="lvc-hero-play-label">
+                      {isEn ? 'Click to Play Real Video' : 'Bấm để phát Video Thực Tế'}
+                    </span>
+                  </div>
+
+                  <div className="lvc-hero-sub-box">
+                    <strong>{isEn ? activeVideo.titleEn : activeVideo.title}</strong>
+                    <span>1-CLICK TEMPLATE · AI SUBTITLE &amp; AUTO DUB PRO</span>
+                  </div>
+                </button>
+              )}
+            </div>
+
+            {/* Thanh Timeline Đa Luồng bên dưới Monitor */}
+            <div className="lvc-hero-timeline">
+              <div className="lvc-timeline-playhead" aria-hidden="true" />
+              <div className="lvc-timeline-row">
+                <span className="tl-tag">V1 · 9:16</span>
+                <div className="tl-track tl-track--video">
+                  <span>{activeVideo.url.replace('/video/', '')} · Template 1-Click</span>
+                </div>
+              </div>
+              <div className="tl-timeline-row lvc-timeline-row">
+                <span className="tl-tag">S1 · SUB</span>
+                <div className="tl-track tl-track--sub">
+                  <span>[VI] Xoá Sub gốc tự động + Phụ đề AI chuẩn ngữ cảnh</span>
+                </div>
+              </div>
+              <div className="lvc-timeline-row">
+                <span className="tl-tag">A1 · DUB</span>
+                <div className="tl-track tl-track--audio">
+                  <span>🎙 LVCStudio Auto Dub Pro · Tách nhạc nền BGM (-14 LUFS)</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

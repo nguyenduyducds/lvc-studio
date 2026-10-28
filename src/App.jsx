@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import Header from './components/Header';
+import Header, { LvcClapperboardLogo } from './components/Header';
 import LiteYouTubeEmbed, { getYouTubeThumbUrl } from './components/LiteYouTubeEmbed';
 import LvcStudioHeroPreview from './components/LvcStudioHeroPreview';
 import { PlatformIcon, SiteIcon } from './components/PlatformIcons';
@@ -7,6 +7,7 @@ import YouTubeConfigModal from './components/YouTubeConfigModal';
 import {
   CONTACT_INFO,
   LOCAL_STUDIO_VIDEOS,
+  ONE_CLICK_TEMPLATES,
   DEMO_VIDEO_TABS,
   STUDIO_WORKSPACES,
   LVC_DEMO_DEFAULT,
@@ -170,24 +171,27 @@ export default function App() {
               <span className="ecosystem-kicker">
                 <i /> ⚡{' '}
                 {isEn
-                  ? 'LVC STUDIO · ALL-IN-ONE AI VIDEO PRODUCTION PLATFORM'
-                  : 'LVC STUDIO · NỀN TẢNG SẢN XUẤT & TỰ ĐỘNG HÓA VIDEO TOÀN DIỆN'}
+                  ? 'LVCSTUDIO · REVIEW & AUTO DUB PRO · 1-CLICK TEMPLATES'
+                  : 'LVCSTUDIO · REVIEW & AUTO DUB PRO · KHO TEMPLATE 1-CLICK DỰNG SẴN'}
               </span>
 
               <h1>
-                {isEn ? 'LVC Studio.' : 'LVC Studio.'}
+                <span className="lvc-hero-brand-inline">
+                  <span className="lvc-word-white">LVC</span>
+                  <span className="lvc-word-gold">Studio.</span>
+                </span>
                 <br />
                 <em>
                   {isEn
-                    ? 'Every AI Video Workflow in One Studio.'
-                    : 'Mọi quy trình Video AI trong một Studio.'}
+                    ? 'Ready-Made 1-Click Templates. Zero Complex Setup.'
+                    : 'Template dựng sẵn chỉ 1 Click. Không cần setup nhiều.'}
                 </em>
               </h1>
 
               <p>
                 {isEn
-                  ? 'Automated video translation, neural AI dubbing, 9:16 viral clip reframing, and multi-thread GPU batch rendering — all unified inside LVC Studio.'
-                  : 'Tự động dịch phụ đề, lồng tiếng AI đa cảm xúc, cắt highlight dọc 9:16 và render hàng loạt bằng phần cứng GPU — tất cả tích hợp trọn vẹn trong phần mềm LVC Studio duy nhất.'}
+                  ? 'Choose from built-in 9:16 templates (Movie Review, Chinese Drama Auto-Blur + AI Dub, Anime 3D, Dual-Video Reaction, Multi-language) — click "Apply to Studio" once and render immediately.'
+                  : 'Tích hợp sẵn Kho mẫu Kịch bản 9:16 (Review Phim, Xoá Sub gốc + Lồng tiếng AI, Phim Tổng Tài, Anime 2D/3D, Ghép 2 Video Reaction) — chỉ cần bấm "Áp dụng vào Studio" 1 Click là chạy ngay, không cần cài đặt thông số phức tạp.'}
               </p>
 
               <div
@@ -206,21 +210,19 @@ export default function App() {
               </div>
 
               <div className="ecosystem-actions">
-                <a className="ecosystem-btn primary" href="#demo">
-                  {isEn ? 'Watch Real YouTube Demo' : 'Xem Video Thực Tế (YouTube)'}
+                <a className="ecosystem-btn primary" href="#kho-mau">
+                  🎁 {isEn ? 'Explore 1-Click Templates' : 'Xem Kho Mẫu 1-Click & Giao Diện Tool'}
                   <SiteIcon name="arrow" />
                 </a>
-                <a className="ecosystem-btn" href="#pricing">
-                  <SiteIcon name="windows" />
-                  {isEn ? 'Download LVC Studio Trial' : 'Tải LVC Studio dùng thử'}
-                  <SiteIcon name="download" />
+                <a className="ecosystem-btn" href="#demo">
+                  ▶ {isEn ? 'Watch 6 Real Videos' : 'Xem 6 Video Thành Phẩm'}
                 </a>
               </div>
 
               <p className="hero-macos-note">
                 {isEn
-                  ? 'Windows PC Available Now · 100% Hardware GPU Acceleration'
-                  : 'Bản cài đặt Windows hiện có · Tối ưu 100% tốc độ GPU phần cứng'}
+                  ? 'LVCStudio (Review & Auto Dub Pro) · 1-Click Preset Store · 100% Hardware GPU Acceleration'
+                  : 'LVCStudio (Review & Auto Dub Pro) · Kho mẫu 1-Click dựng sẵn · Tăng tốc 100% bằng GPU phần cứng'}
               </p>
             </div>
 
@@ -343,6 +345,130 @@ export default function App() {
                   })}
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* ================= 1.5. REAL TOOL SCREENSHOT & 1-CLICK TEMPLATE STORE (#kho-mau) ================= */}
+          <section
+            className="ecosystem-section lvc-template-store-section"
+            id="kho-mau"
+            aria-labelledby="kho-mau-title"
+          >
+            <header className="ecosystem-section-head">
+              <div>
+                <small>
+                  {isEn
+                    ? 'OFFICIAL LVCSTUDIO INTERFACE · 1-CLICK TEMPLATES'
+                    : 'NHẬN DIỆN THƯƠNG HIỆU LVCSTUDIO · TEMPLATE SẴN CÓ CHỈ 1 CLICK'}
+                </small>
+                <h2 id="kho-mau-title">
+                  {isEn
+                    ? 'Ready-Made 1-Click Script Templates — No Complex Setup Required'
+                    : 'Kho mẫu Kịch bản dựng sẵn — Chỉ 1 Click, không cần setup nhiều'}
+                </h2>
+              </div>
+              <p>
+                {isEn
+                  ? 'Every layout, subtitle blur region, 9:16 crop, and AI voice parameter is pre-configured inside LVCStudio. Just click "Apply to Studio" once and run.'
+                  : 'Mọi bố cục khung hình 9:16, vùng làm mờ sub gốc, hiệu ứng phụ đề và giọng đọc AI đều được đóng gói sẵn trong Kho mẫu Kịch bản của LVCStudio. Bạn chỉ cần bấm "Áp dụng vào Studio" 1 Click là chạy ngay.'}
+              </p>
+            </header>
+
+            {/* Khung trưng bày Giao diện thật của phần mềm LVCStudio (Review & Auto Dub Pro) */}
+            <div className="lvc-real-software-showcase">
+              <div className="lvc-real-software-topbar">
+                <div className="lvc-real-software-brand">
+                  <LvcClapperboardLogo size={32} />
+                  <div>
+                    <div className="lvc-brand-title-line">
+                      <span className="lvc-word-white">LVC</span>
+                      <span className="lvc-word-gold">Studio</span>
+                      <span className="lvc-software-tag">GIAO DIỆN CHÍNH THỨC</span>
+                    </div>
+                    <small className="lvc-brand-sub">REVIEW &amp; AUTO DUB PRO · KHO MẪU KỊCH BẢN 1-CLICK</small>
+                  </div>
+                </div>
+
+                <div className="lvc-real-software-pills">
+                  <span>🎁 Kho mẫu miễn phí dựng sẵn</span>
+                  <span>⚡ 1-Click &ldquo;Áp dụng vào Studio&rdquo;</span>
+                  <span>🧼 Tự động làm mờ Sub gốc</span>
+                  <span>📐 Chuẩn khung 9:16 TikTok / Shorts</span>
+                </div>
+              </div>
+
+              <div className="lvc-real-software-frame">
+                <img
+                  src={CONTACT_INFO.appScreenshot}
+                  alt="Ảnh chụp thực tế phần mềm LVCStudio — Review & Auto Dub Pro với Kho mẫu Kịch bản 1-Click"
+                  className="lvc-real-software-img"
+                  loading="eager"
+                />
+              </div>
+            </div>
+
+            {/* Lưới 8 Template Kịch Bản 1-Click dựng sẵn (như trong phần mềm LVCStudio) */}
+            <div className="lvc-template-grid-head">
+              <div>
+                <h3>
+                  🎁 {isEn ? 'Built-in 1-Click Templates Inside LVCStudio' : '8 Mẫu Kịch bản 1-Click có sẵn trong LVCStudio'}
+                </h3>
+                <p>
+                  {isEn
+                    ? 'Pick a preset below — no manual crop, blur, or subtitle styling needed.'
+                    : 'Chọn sẵn đúng chủ đề kênh của bạn — không cần tự căn lề, không cần chỉnh thông số thủ công.'}
+                </p>
+              </div>
+              <a
+                className="ecosystem-btn primary"
+                href={CONTACT_INFO.zaloUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Nhận trọn bộ Template qua Zalo {CONTACT_INFO.phoneDisplay} →
+              </a>
+            </div>
+
+            <div className="lvc-template-cards-grid">
+              {ONE_CLICK_TEMPLATES.map((tpl) => (
+                <article
+                  key={tpl.id}
+                  className="lvc-tpl-card"
+                  style={{ '--tpl-accent': tpl.accent }}
+                >
+                  <div className="lvc-tpl-preview">
+                    <img
+                      src={tpl.poster}
+                      alt={tpl.title}
+                      className="lvc-tpl-preview-img"
+                      loading="lazy"
+                    />
+                    <div className="lvc-tpl-preview-scrim" />
+
+                    <span className="lvc-tpl-brand-chip">LVC STUDIO</span>
+
+                    <div className="lvc-tpl-center-banner">
+                      <span>{tpl.categoryBadge}</span>
+                    </div>
+
+                    <span className="lvc-tpl-ratio-chip">▶ {tpl.ratio}</span>
+                  </div>
+
+                  <div className="lvc-tpl-body">
+                    <h4>{isEn ? tpl.titleEn : tpl.title}</h4>
+                    <p className="lvc-tpl-specs">
+                      <strong>LVC Studio</strong> ▷ {tpl.specs}
+                    </p>
+                    <p className="lvc-tpl-desc">{tpl.desc}</p>
+
+                    <div className="lvc-tpl-actions">
+                      <a href="#demo" className="lvc-tpl-apply-btn">
+                        ⚡ {isEn ? 'Apply to Studio (1-Click)' : 'Áp dụng vào Studio (1-Click)'}
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
             </div>
           </section>
 
@@ -1293,35 +1419,28 @@ export default function App() {
         <footer className="footer">
           <div className="footer-grid">
             <div>
-              <a className="brand" href="#top" aria-label="LVC STUDIO">
-                <span className="brand-mark" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 3.2l6 3.3v7l-6 3.3-6-3.3v-7l6-3.3z"
-                      fill="#30d5ff"
-                    />
-                  </svg>
+              <a className="brand lvc-brand-identity" href="#top" aria-label="LVCStudio — Review & Auto Dub Pro">
+                <span className="brand-mark lvc-brand-mark" aria-hidden="true">
+                  <LvcClapperboardLogo size={34} />
                 </span>
                 <span className="brand-horizontal-text">
-                  <span className="brand-text-row">
-                    <strong className="brand-name-gen">LVC</strong>
-                    <span className="brand-name-sep" aria-hidden="true">
-                      ·
-                    </span>
-                    <span className="brand-name-studio">STUDIO</span>
+                  <span className="brand-text-row lvc-brand-title-line">
+                    <strong className="brand-name-gen lvc-word-white">LVC</strong>
+                    <span className="brand-name-studio lvc-word-gold">Studio</span>
                   </span>
-                  <small className="brand-tagline">ALL-IN-ONE AI VIDEO STUDIO</small>
+                  <small className="brand-tagline lvc-brand-sub">REVIEW &amp; AUTO DUB PRO</small>
                 </span>
               </a>
               <p>
-                Nền tảng phần mềm sản xuất video AI tự động hóa và tăng tốc phần cứng GPU chuyên sâu dành cho nhà sáng tạo.
+                Phần mềm LVCStudio (Review &amp; Auto Dub Pro) tích hợp sẵn Kho mẫu Kịch bản 1-Click không cần setup nhiều và tăng tốc phần cứng GPU chuyên sâu.
               </p>
             </div>
 
             <div>
-              <strong>LVC Studio</strong>
-              <a href="#top">Tổng quan LVC Studio</a>
-              <a href="#demo">Video Thực Tế (YouTube)</a>
+              <strong>LVCStudio</strong>
+              <a href="#top">Tổng quan LVCStudio</a>
+              <a href="#kho-mau">Kho Mẫu Kịch Bản 1-Click</a>
+              <a href="#demo">6 Video Thực Tế (/video)</a>
               <a href="#ecosystem">5 Mô-đun Tích hợp</a>
               <a href="#workflow">Quy trình 3 bước</a>
             </div>
