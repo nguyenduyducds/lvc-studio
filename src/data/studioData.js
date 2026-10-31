@@ -13,7 +13,7 @@ export const CONTACT_INFO = {
   realAppScreenshot: '/images/lvcstudio-app-real.png',
 };
 
-// 8 Mẫu Kịch Bản & Preset Dựng Sẵn 1-Click (Lấy chính xác từ giao diện thật LVCStudio — Kho mẫu Kịch bản)
+// 10 Mẫu Kịch Bản & Preset Dựng Sẵn 1-Click (Lấy chính xác từ giao diện thật LVCStudio — Kho mẫu Kịch bản)
 export const ONE_CLICK_TEMPLATES = [
   {
     id: 'tpl-1',
@@ -34,7 +34,7 @@ export const ONE_CLICK_TEMPLATES = [
     categoryBadge: 'BỐ CỤC 2 VIDEO',
     ratio: '9:16',
     accent: '#22d3ee',
-    title: 'Ghép 2 Video Trên-Dưới (Reaction TikTok) | BỐ CỤC 2 VIDEO',
+    title: 'Ghép 2 Video Trên-Dưới (Reaction TikTok / Shorts)',
     titleEn: 'Dual Video Top-Bottom Layout (TikTok Reaction)',
     specs: '9:16 · Cắt vừa khung · Làm mờ sub gốc',
     poster: '/video/posters/douyin_7696086855386003825.jpg',
@@ -47,7 +47,7 @@ export const ONE_CLICK_TEMPLATES = [
     categoryBadge: 'ANIME / 3D',
     ratio: '9:16',
     accent: '#a855f7',
-    title: 'Hoạt Hình - Anime 2D/3D Rực Rỡ (9:16 Shorts) | ANIME / 3D',
+    title: 'Hoạt Hình - Anime 2D/3D Rực Rỡ (9:16 Shorts)',
     titleEn: 'Vibrant 2D/3D Anime & Donghua Shorts (9:16)',
     specs: '9:16 · Lấp đầy · Làm mờ sub gốc · Miễn phí',
     poster: '/video/posters/douyin_7697094101003515641.jpg',
@@ -73,7 +73,7 @@ export const ONE_CLICK_TEMPLATES = [
     categoryBadge: 'HÀI GENZ',
     ratio: '9:16',
     accent: '#10b981',
-    title: 'Review Hài Hước - Bắt Trend GenZ (TikTok Sôi Nổi) | HÀI GENZ',
+    title: 'Review Hài Hước - Bắt Trend GenZ (TikTok Sôi Nổi)',
     titleEn: 'Trending GenZ Comedy Review (Energetic TikTok Style)',
     specs: '9:16 · Lấp đầy · Làm mờ sub gốc · Miễn phí',
     poster: '/video/posters/douyin_7699062355951235057.jpg',
@@ -86,7 +86,7 @@ export const ONE_CLICK_TEMPLATES = [
     categoryBadge: 'VIDEO LỒNG PIP',
     ratio: '9:16',
     accent: '#3b82f6',
-    title: 'Review Phim Lồng Video PiP - Tiên Hiệp & Mỹ Nhân (9:16)',
+    title: 'Review Phim Lồng Video PiP - Tiên Hiệp & Mỹ Nhân',
     titleEn: 'Picture-in-Picture (PiP) Fantasy & Drama Review (9:16)',
     specs: '9:16 · Lấp đầy · Lật gương · Miễn phí',
     poster: '/video/posters/douyin_7697826383670454513.jpg',
@@ -118,6 +118,32 @@ export const ONE_CLICK_TEMPLATES = [
     poster: '/video/posters/douyin_7696489073725473723.jpg',
     badge: '1-CLICK PRESET',
     desc: 'Tạo sẵn nền viền mờ (Blur Background) kèm 2 dải tiêu đề chữ trắng trên-dưới chuẩn phong cách TikTok Viral.',
+  },
+  {
+    id: 'tpl-9',
+    category: 'TRUYỆN ĐÊM',
+    categoryBadge: 'TRUYỆN ĐÊM',
+    ratio: '9:16',
+    accent: '#06b6d4',
+    title: 'Kể Chuyện Đêm Khuya & Tâm Sự (Giọng Trầm Truyền Cảm)',
+    titleEn: 'Late Night Storytelling & Podcast (Warm Deep AI Voice)',
+    specs: '9:16 · Tách nhạc BGM · Giọng AI trầm ấm · Miễn phí',
+    poster: '/video/posters/douyin_7695233377897414577.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Cân bằng sẵn âm lượng nhạc nền BGM (-14 LUFS), giọng đọc trầm ấm và phụ đề mềm mại cho kênh kể chuyện.',
+  },
+  {
+    id: 'tpl-10',
+    category: 'TIN TỨC / AI',
+    categoryBadge: 'TIN TỨC / AI',
+    ratio: '9:16',
+    accent: '#6366f1',
+    title: 'Tin Tức Nhanh & Kiến Thức AI (Caption Karaoke Nhảy Chữ)',
+    titleEn: 'Fast News & AI Knowledge Shorts (Karaoke Word-by-Word)',
+    specs: '9:16 · Cắt vừa khung · Phụ đề nhảy chữ · Miễn phí',
+    poster: '/video/posters/douyin_7697094101003515641.jpg',
+    badge: '1-CLICK PRESET',
+    desc: 'Tự động bắt nhịp từng từ (Karaoke Caption), nhấn màu từ khóa quan trọng và tối ưu tốc độ đọc cuốn hút.',
   },
 ];
 

@@ -126,7 +126,7 @@ export default function LvcStudioHeroPreview({
                 className="lvc-real-action-btn primary"
                 onClick={(e) => e.stopPropagation()}
               >
-                🎁 Xem 8 Mẫu 1-Click ↓
+                🎁 Xem 10 Mẫu 1-Click ↓
               </a>
               <button
                 type="button"

@@ -407,11 +407,11 @@ export default function App() {
               </div>
             </div>
 
-            {/* Lưới 8 Template Kịch Bản 1-Click dựng sẵn (như trong phần mềm LVCStudio) */}
+            {/* Lưới 10 Template Kịch Bản 1-Click dựng sẵn (2 hàng x 5 cột chuẩn đẹp) */}
             <div className="lvc-template-grid-head">
               <div>
                 <h3>
-                  🎁 {isEn ? 'Built-in 1-Click Templates Inside LVCStudio' : '8 Mẫu Kịch bản 1-Click có sẵn trong LVCStudio'}
+                  🎁 {isEn ? '10 Built-in 1-Click Templates Inside LVCStudio' : '10 Mẫu Kịch bản 1-Click có sẵn trong LVCStudio'}
                 </h3>
                 <p>
                   {isEn
