@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Header, { LvcClapperboardLogo } from './components/Header';
 import LiteYouTubeEmbed, { getYouTubeThumbUrl } from './components/LiteYouTubeEmbed';
 import LvcStudioHeroPreview from './components/LvcStudioHeroPreview';
-import { PlatformIcon, SiteIcon } from './components/PlatformIcons';
+import { PlatformIcon, PlatformCoverEmblem, SiteIcon } from './components/PlatformIcons';
 import YouTubeConfigModal from './components/YouTubeConfigModal';
 import {
   CONTACT_INFO,
@@ -955,9 +955,10 @@ export default function App() {
             <div className="home-showcase-tabs" role="tablist" aria-label="Lọc kênh theo nền tảng">
               {[
                 { id: 'all', label: isEn ? 'All' : 'Tất cả' },
-                { id: 'tiktok', label: 'TikTok', icon: 'tiktok' },
                 { id: 'youtube', label: 'YouTube', icon: 'youtube' },
                 { id: 'facebook', label: 'Facebook', icon: 'facebook' },
+                { id: 'tiktok', label: 'TikTok', icon: 'tiktok' },
+                { id: 'telegram', label: 'Telegram · Zalo', icon: 'telegram' },
               ].map((tab) => {
                 const count =
                   tab.id === 'all'
@@ -996,11 +997,23 @@ export default function App() {
                   >
                     <div className="home-channel-cover">
                       <div className="home-channel-fallback" style={{ background: ch.gradient }}>
-                        <span>{ch.channelName.slice(0, 2).toUpperCase()}</span>
+                        {ch.coverImage && (
+                          <img
+                            src={ch.coverImage}
+                            alt=""
+                            className="home-channel-cover-img"
+                            loading="lazy"
+                          />
+                        )}
+                        <div className="home-channel-cover-scrim" />
+                        <PlatformCoverEmblem
+                          platform={ch.platform}
+                          secondaryPlatform={ch.secondaryPlatform}
+                        />
                       </div>
                       <span className={`home-channel-badge badge-${ch.platform}`}>
                         <PlatformIcon platform={ch.platform} />
-                        <span>{ch.platform.toUpperCase()}</span>
+                        <span>{(ch.platformLabel || ch.platform).toUpperCase()}</span>
                       </span>
                       {ch.featured && (
                         <span className="home-channel-featured-tag">

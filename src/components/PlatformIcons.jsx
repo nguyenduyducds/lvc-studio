@@ -6,10 +6,23 @@ export function PlatformIcon({ platform, size = 18 }) {
   if (key === 'tiktok') {
     return (
       <svg className="platform-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect width="24" height="24" rx="5" fill="#06090f" />
+        <rect width="24" height="24" rx="6" fill="#06090f" stroke="rgba(255,255,255,0.14)" strokeWidth="0.8" />
+        {/* Cyan glitch layer */}
         <path
-          d="M16.8 7.6a3.6 3.6 0 0 1-2.8-3.1V4h-2.6v10.3a2.2 2.2 0 1 1-1.5-2.1v-2.6a4.8 4.8 0 1 0 4.1 4.7V9.1a6.1 6.1 0 0 0 3.7 1.3V7.8c-.3 0-.6-.1-.9-.2Z"
-          fill="#22d3ee"
+          d="M16.4 7.3a3.5 3.5 0 0 1-2.7-3V4h-2.5v10.1a2.1 2.1 0 1 1-1.5-2v-2.5a4.6 4.6 0 1 0 4 4.5V8.9a5.9 5.9 0 0 0 3.5 1.2V7.6c-.3 0-.5-.1-.8-.3Z"
+          fill="#25F4EE"
+          transform="translate(-0.6, -0.5)"
+        />
+        {/* Red/Pink glitch layer */}
+        <path
+          d="M16.4 7.3a3.5 3.5 0 0 1-2.7-3V4h-2.5v10.1a2.1 2.1 0 1 1-1.5-2v-2.5a4.6 4.6 0 1 0 4 4.5V8.9a5.9 5.9 0 0 0 3.5 1.2V7.6c-.3 0-.5-.1-.8-.3Z"
+          fill="#FE2C55"
+          transform="translate(0.6, 0.5)"
+        />
+        {/* White center note */}
+        <path
+          d="M16.4 7.3a3.5 3.5 0 0 1-2.7-3V4h-2.5v10.1a2.1 2.1 0 1 1-1.5-2v-2.5a4.6 4.6 0 1 0 4 4.5V8.9a5.9 5.9 0 0 0 3.5 1.2V7.6c-.3 0-.5-.1-.8-.3Z"
+          fill="#ffffff"
         />
       </svg>
     );
@@ -18,8 +31,12 @@ export function PlatformIcon({ platform, size = 18 }) {
   if (key === 'youtube') {
     return (
       <svg className="platform-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect width="24" height="24" rx="5" fill="#dc2626" />
-        <path d="M10 8.5v7l6-3.5-6-3.5Z" fill="#fff" />
+        <rect width="24" height="24" rx="6" fill="#FF0000" />
+        <path
+          d="M19.6 8.2a2.2 2.2 0 0 0-1.5-1.6C16.7 6.2 12 6.2 12 6.2s-4.7 0-6.1.4a2.2 2.2 0 0 0-1.5 1.6C4 9.6 4 12 4 12s0 2.4.4 3.8a2.2 2.2 0 0 0 1.5 1.6c1.4.4 6.1.4 6.1.4s4.7 0 6.1-.4a2.2 2.2 0 0 0 1.5-1.6c.4-1.4.4-3.8.4-3.8s0-2.4-.4-3.8Z"
+          fill="#FF0000"
+        />
+        <path d="M10.2 14.8V9.2L15.2 12l-5 2.8Z" fill="#ffffff" />
       </svg>
     );
   }
@@ -27,10 +44,20 @@ export function PlatformIcon({ platform, size = 18 }) {
   if (key === 'douyin') {
     return (
       <svg className="platform-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect width="24" height="24" rx="5" fill="#111827" />
+        <rect width="24" height="24" rx="6" fill="#0f172a" stroke="rgba(244,63,94,0.45)" strokeWidth="0.9" />
         <path
           d="M16.5 7.5a3.5 3.5 0 0 1-2.7-3H11.3v10.2a2.1 2.1 0 1 1-1.5-2V10a4.6 4.6 0 1 0 4 4.6V9a5.8 5.8 0 0 0 3.5 1.2V7.7l-.8-.2Z"
-          fill="#f43f5e"
+          fill="#00f2fe"
+          transform="translate(-0.5, -0.5)"
+        />
+        <path
+          d="M16.5 7.5a3.5 3.5 0 0 1-2.7-3H11.3v10.2a2.1 2.1 0 1 1-1.5-2V10a4.6 4.6 0 1 0 4 4.6V9a5.8 5.8 0 0 0 3.5 1.2V7.7l-.8-.2Z"
+          fill="#fe0979"
+          transform="translate(0.5, 0.5)"
+        />
+        <path
+          d="M16.5 7.5a3.5 3.5 0 0 1-2.7-3H11.3v10.2a2.1 2.1 0 1 1-1.5-2V10a4.6 4.6 0 1 0 4 4.6V9a5.8 5.8 0 0 0 3.5 1.2V7.7l-.8-.2Z"
+          fill="#ffffff"
         />
       </svg>
     );
@@ -39,15 +66,15 @@ export function PlatformIcon({ platform, size = 18 }) {
   if (key === 'bilibili') {
     return (
       <svg className="platform-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect width="24" height="24" rx="5" fill="#0284c7" />
+        <rect width="24" height="24" rx="6" fill="#00A1D6" />
         <path
-          d="M8.5 5.5 10.5 7.5M15.5 5.5 13.5 7.5M6.5 7.5h11a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2V9.5a2 2 0 0 1 2-2Z"
+          d="M8.2 5.2 10.4 7.4M15.8 5.2 13.6 7.4M6.5 7.5h11a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2V9.5a2 2 0 0 1 2-2Z"
           stroke="#fff"
           strokeWidth="1.7"
           strokeLinecap="round"
         />
-        <circle cx="9.5" cy="12.5" r="1.2" fill="#fff" />
-        <circle cx="14.5" cy="12.5" r="1.2" fill="#fff" />
+        <circle cx="9.5" cy="12.5" r="1.25" fill="#fff" />
+        <circle cx="14.5" cy="12.5" r="1.25" fill="#fff" />
       </svg>
     );
   }
@@ -55,14 +82,14 @@ export function PlatformIcon({ platform, size = 18 }) {
   if (key === 'xiaohongshu') {
     return (
       <svg className="platform-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect width="24" height="24" rx="5" fill="#e11d48" />
+        <rect width="24" height="24" rx="6" fill="#FF2442" />
         <text
           x="12"
-          y="15.5"
+          y="15.2"
           textAnchor="middle"
           fill="#fff"
-          fontSize="8.5"
-          fontWeight="800"
+          fontSize="8.2"
+          fontWeight="900"
           fontFamily="system-ui, sans-serif"
         >
           RED
@@ -74,9 +101,9 @@ export function PlatformIcon({ platform, size = 18 }) {
   if (key === 'facebook') {
     return (
       <svg className="platform-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect width="24" height="24" rx="5" fill="#1877f2" />
+        <rect width="24" height="24" rx="6" fill="#1877F2" />
         <path
-          d="M13.4 19v-5.8h2l.3-2.3h-2.3V9.4c0-.7.2-1.1 1.2-1.1h1.2V6.2c-.2 0-.9-.1-1.7-.1-1.7 0-2.9 1-2.9 3v1.8H9.3v2.3h1.9V19h2.2Z"
+          d="M13.6 19.5v-6.1h2.1l.35-2.4h-2.45V9.4c0-.7.22-1.15 1.22-1.15h1.28V6.05c-.22-.03-.98-.1-1.86-.1-1.85 0-3.1 1.12-3.1 3.2v1.85H9.1v2.4h2.04v6.1h2.46Z"
           fill="#fff"
         />
       </svg>
@@ -86,7 +113,7 @@ export function PlatformIcon({ platform, size = 18 }) {
   if (key === 'telegram') {
     return (
       <svg className="platform-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect width="24" height="24" rx="5" fill="#229ED9" />
+        <rect width="24" height="24" rx="6" fill="#229ED9" />
         <path
           d="M18.4 6.6 5.2 11.7c-.8.3-.8.8-.1 1l3.4 1.1 7.8-4.9c.4-.2.7-.1.4.2l-6.3 5.7-.2 3.3c.3 0 .5-.1.7-.3l1.7-1.6 3.4 2.5c.6.3 1.1.2 1.2-.6l2.2-10.5c.2-.8-.3-1.2-1-1Z"
           fill="#fff"
@@ -95,7 +122,46 @@ export function PlatformIcon({ platform, size = 18 }) {
     );
   }
 
+  if (key === 'zalo') {
+    return (
+      <svg className="platform-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect width="24" height="24" rx="6" fill="#0068FF" />
+        <text
+          x="12"
+          y="15"
+          textAnchor="middle"
+          fill="#ffffff"
+          fontSize="7.6"
+          fontWeight="900"
+          fontFamily="Plus Jakarta Sans, Inter, sans-serif"
+        >
+          Zalo
+        </text>
+      </svg>
+    );
+  }
+
   return null;
+}
+
+/**
+ * Biểu tượng Nền tảng 3D nổi bật hiển thị chính giữa phần ảnh bìa của mỗi thẻ Kênh (#showcase)
+ */
+export function PlatformCoverEmblem({ platform, secondaryPlatform }) {
+  const key = (platform || '').toLowerCase();
+
+  return (
+    <div className={`channel-cover-emblem channel-cover-emblem--${key}`} aria-hidden="true">
+      <div className="channel-cover-emblem__ring">
+        <PlatformIcon platform={key} size={46} />
+        {secondaryPlatform && (
+          <span className="channel-cover-emblem__sub">
+            <PlatformIcon platform={secondaryPlatform} size={22} />
+          </span>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export function SiteIcon({ name = 'arrow' }) {
