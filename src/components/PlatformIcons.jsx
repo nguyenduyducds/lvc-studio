@@ -126,14 +126,19 @@ export function PlatformIcon({ platform, size = 18 }) {
     return (
       <svg className="platform-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <rect width="24" height="24" rx="6" fill="#0068FF" />
+        <path
+          d="M12 4.2c-4.7 0-8.5 3.1-8.5 7 0 2.2 1.3 4.2 3.3 5.5-.15.75-.65 2-.75 2.25-.1.25.15.45.42.34.26-.1 1.95-1.02 2.8-1.52.85.2 1.78.33 2.73.33 4.7 0 8.5-3.1 8.5-7s-3.8-6.9-8.5-6.9Z"
+          fill="#ffffff"
+        />
         <text
           x="12"
-          y="15"
+          y="13.4"
           textAnchor="middle"
-          fill="#ffffff"
-          fontSize="7.6"
+          fill="#0068FF"
+          fontSize="6.3"
           fontWeight="900"
-          fontFamily="Plus Jakarta Sans, Inter, sans-serif"
+          fontFamily="Plus Jakarta Sans, Inter, system-ui, sans-serif"
+          letterSpacing="-0.2"
         >
           Zalo
         </text>

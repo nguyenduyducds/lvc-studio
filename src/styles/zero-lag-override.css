@@ -1093,3 +1093,64 @@ html[data-portal-theme="light"] .ecosystem-hero-copy .lvc-word-white {
   display: grid;
   place-items: center;
 }
+
+
+/* ==========================================================================
+   10. REDESIGNED ZALO & TELEGRAM SHOWCASE CARDS & CTA BUTTONS
+   ========================================================================== */
+.channel-cover-emblem--zalo .channel-cover-emblem__ring {
+  border-color: rgba(0, 104, 255, 0.78);
+  box-shadow: 0 14px 32px rgba(0, 104, 255, 0.5), 0 0 0 6px rgba(0, 104, 255, 0.18);
+}
+
+.home-channel-badge.badge-zalo {
+  background: rgba(0, 104, 255, 0.22) !important;
+  border: 1px solid rgba(56, 189, 248, 0.55) !important;
+  color: #e0f2fe !important;
+}
+
+.home-channel-badge.badge-telegram {
+  background: rgba(34, 158, 217, 0.22) !important;
+  border: 1px solid rgba(56, 189, 248, 0.55) !important;
+  color: #e0f2fe !important;
+}
+
+.home-channel-actions-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.home-channel-cta--zalo {
+  background: linear-gradient(135deg, #0068ff 0%, #0284c7 100%) !important;
+  border-color: rgba(125, 211, 252, 0.55) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+.home-channel-cta--zalo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 104, 255, 0.45);
+}
+
+.home-channel-sub-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #93c5fd;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+
+.home-channel-sub-cta:hover {
+  border-color: #38bdf8;
+  background: rgba(30, 41, 59, 0.95);
+  color: #ffffff;
+}

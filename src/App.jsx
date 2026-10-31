@@ -421,11 +421,11 @@ export default function App() {
               </div>
               <a
                 className="ecosystem-btn primary"
-                href={CONTACT_INFO.zaloUrl}
+                href={CONTACT_INFO.zaloGroupUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Nhận trọn bộ Template qua Zalo {CONTACT_INFO.phoneDisplay} →
+                Vào Nhóm Zalo nhận trọn bộ Template 1-Click →
               </a>
             </div>
 
@@ -957,8 +957,8 @@ export default function App() {
                 { id: 'all', label: isEn ? 'All' : 'Tất cả' },
                 { id: 'youtube', label: 'YouTube', icon: 'youtube' },
                 { id: 'facebook', label: 'Facebook', icon: 'facebook' },
-                { id: 'tiktok', label: 'TikTok', icon: 'tiktok' },
-                { id: 'telegram', label: 'Telegram · Zalo', icon: 'telegram' },
+                { id: 'zalo', label: 'Nhóm Zalo', icon: 'zalo' },
+                { id: 'telegram', label: 'Telegram', icon: 'telegram' },
               ].map((tab) => {
                 const count =
                   tab.id === 'all'
@@ -993,7 +993,7 @@ export default function App() {
                 {filteredChannels.map((ch) => (
                   <article
                     key={ch.id}
-                    className={`home-channel-card ${ch.featured ? 'is-featured' : ''}`}
+                    className={`home-channel-card home-channel-card--${ch.platform} ${ch.featured ? 'is-featured' : ''}`}
                   >
                     <div className="home-channel-cover">
                       <div className="home-channel-fallback" style={{ background: ch.gradient }}>
@@ -1017,7 +1017,7 @@ export default function App() {
                       </span>
                       {ch.featured && (
                         <span className="home-channel-featured-tag">
-                          ★ {isEn ? 'Featured' : 'Nổi bật'}
+                          ★ {isEn ? 'Official' : 'Chính thức'}
                         </span>
                       )}
                     </div>
@@ -1029,38 +1029,48 @@ export default function App() {
                       </div>
                       <div className="home-channel-stats">
                         <span className="channel-stat-aud">
-                          <strong>{(ch.followerCount / 1000).toFixed(0)}K người theo dõi</strong>
-                        </span>
-                        <span className="channel-stat-likes">
-                          {' '}
-                          · {(ch.likeCount / 1000000).toFixed(1)}M likes
+                          <strong>
+                            {ch.statLabel || `${(ch.followerCount / 1000).toFixed(0)}K người theo dõi`}
+                          </strong>
                         </span>
                       </div>
                       <p className="home-channel-desc" title={ch.description}>
                         {ch.description}
                       </p>
-                      <a
-                        href={ch.channelUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="home-channel-cta"
-                      >
-                        <span>{isEn ? 'Visit Channel' : 'Truy cập kênh'}</span>
-                        <svg
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          aria-hidden="true"
+                      <div className="home-channel-actions-stack">
+                        <a
+                          href={ch.channelUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`home-channel-cta home-channel-cta--${ch.platform}`}
                         >
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                      </a>
+                          <span>{isEn ? 'Visit Channel' : ch.ctaLabel || 'Truy cập kênh'}</span>
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden="true"
+                          >
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                          </svg>
+                        </a>
+                        {ch.secondaryUrl && (
+                          <a
+                            href={ch.secondaryUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="home-channel-sub-cta"
+                          >
+                            📞 {ch.secondaryCtaLabel}
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </article>
                 ))}
@@ -1140,16 +1150,16 @@ export default function App() {
                     <span>✓</span> Trải nghiệm đầy đủ giao diện & luồng AI
                   </li>
                   <li>
-                    <span>✓</span> Tham gia nhóm Telegram nhận hỗ trợ trực tiếp
+                    <span>✓</span> Vào Nhóm Zalo &amp; Telegram nhận bản dùng thử + Preset 1-Click
                   </li>
                 </ul>
                 <a
                   className="ecosystem-btn"
-                  href={CONTACT_INFO.telegramUrl}
+                  href={CONTACT_INFO.zaloGroupUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Tham gia Telegram nhận bản Trial →
+                  Tham gia Nhóm Zalo nhận bản Trial →
                 </a>
               </article>
 
@@ -1401,11 +1411,19 @@ export default function App() {
               <div className="home-final-actions">
                 <a
                   className="ecosystem-btn primary"
+                  href={CONTACT_INFO.zaloGroupUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tham gia Nhóm Zalo LVCStudio →
+                </a>
+                <a
+                  className="ecosystem-btn"
                   href={CONTACT_INFO.zaloUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Chat Zalo: {CONTACT_INFO.phoneDisplay} →
+                  Chat Zalo 1-1: {CONTACT_INFO.phoneDisplay}
                 </a>
                 <a
                   className="ecosystem-btn"
@@ -1459,12 +1477,15 @@ export default function App() {
             </div>
 
             <div>
-              <strong>Liên hệ & Cộng đồng</strong>
+              <strong>Liên hệ &amp; Cộng đồng</strong>
+              <a href={CONTACT_INFO.zaloGroupUrl} target="_blank" rel="noopener noreferrer">
+                Nhóm Cộng đồng Zalo LVCStudio
+              </a>
               <a href={CONTACT_INFO.zaloUrl} target="_blank" rel="noopener noreferrer">
                 Zalo / Hotline: {CONTACT_INFO.phoneDisplay}
               </a>
               <a href={CONTACT_INFO.telegramUrl} target="_blank" rel="noopener noreferrer">
-                Cộng đồng Telegram LVC Studio
+                Cộng đồng Telegram LVCStudio
               </a>
               <a href={CONTACT_INFO.facebookUrl} target="_blank" rel="noopener noreferrer">
                 Fanpage Facebook Chính thức
@@ -1488,8 +1509,11 @@ export default function App() {
           <div className="footer-bottom">
             <span>© 2026 LVC Studio · Zalo/Hotline: {CONTACT_INFO.phoneDisplay}. Tất cả các quyền được bảo lưu.</span>
             <nav aria-label="Kênh chính thức">
+              <a href={CONTACT_INFO.zaloGroupUrl} target="_blank" rel="noopener noreferrer">
+                Nhóm Zalo
+              </a>
               <a href={CONTACT_INFO.zaloUrl} target="_blank" rel="noopener noreferrer">
-                Zalo
+                Zalo {CONTACT_INFO.phoneDisplay}
               </a>
               <a href={CONTACT_INFO.telegramUrl} target="_blank" rel="noopener noreferrer">
                 Telegram
@@ -1510,15 +1534,17 @@ export default function App() {
         <div className="floating-dock__item floating-dock__item--hotline">
           <a
             className="floating-dock__btn floating-dock__btn--hotline"
-            href={`tel:${CONTACT_INFO.phoneRaw}`}
-            aria-label={`Gọi Hotline ${CONTACT_INFO.phoneDisplay}`}
+            href={CONTACT_INFO.zaloUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Zalo / Hotline ${CONTACT_INFO.phoneDisplay}`}
           >
             <span className="floating-dock__icon-box">
               <SiteIcon name="phone" />
               <span className="floating-dock__live-dot" aria-hidden="true" />
             </span>
             <span className="floating-dock__expand-content">
-              <span className="floating-dock__label">Hotline</span>
+              <span className="floating-dock__label">Hotline/Zalo</span>
               <span className="floating-dock__sep">·</span>
               <span className="floating-dock__number">{CONTACT_INFO.phoneDisplay}</span>
             </span>
@@ -1528,13 +1554,13 @@ export default function App() {
         <div className="floating-dock__item">
           <a
             className="floating-dock__btn floating-dock__btn--social zalo"
-            href={CONTACT_INFO.zaloUrl}
+            href={CONTACT_INFO.zaloGroupUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Zalo hỗ trợ ${CONTACT_INFO.phoneDisplay}`}
+            aria-label="Tham gia Nhóm Cộng đồng Zalo LVCStudio"
           >
             <SiteIcon name="zalo" />
-            <span className="floating-dock__tooltip">Zalo · {CONTACT_INFO.phoneDisplay}</span>
+            <span className="floating-dock__tooltip">Nhóm Cộng đồng Zalo LVCStudio</span>
           </a>
         </div>
 
